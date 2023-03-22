@@ -1,9 +1,7 @@
 const choiceArray = ["Rock", "Paper", "Scissors"];
-const computerChoice = choiceArray[Math.floor(Math.random() * choiceArray.length)];
 
 function getComputerChoice() {
-    return computerChoice
+    return choiceArray[Math.floor(Math.random() * choiceArray.length)];
 }
 
 
-console.log(getComputerChoice(choiceArray));
