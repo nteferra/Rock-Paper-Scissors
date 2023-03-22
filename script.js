@@ -13,42 +13,34 @@ let losses = 0;
 
 
 function playRound() {
-    if (playerSelectionUC === "Rock" && computerSelection === "Paper") {
-        losses += +1;
+    if ((playerSelectionUC === "Rock" && computerSelection === "Paper") || 
+        (playerSelectionUC === "Paper" && computerSelection === "Scissors") ||
+        (playerSelectionUC === "Scissors" && computerSelection === "Rock")
+    ) {
+        losses++;
         return lossPrompt; 
-    } else if (playerSelectionUC === "Rock" && computerSelection === "Scissors") {
-        wins += +1
+          
+    } if ((playerSelectionUC === "Rock" && computerSelection === "Scissors") ||
+         (playerSelectionUC === "Paper" && computerSelection === "Rock") ||
+         (playerSelectionUC === "Scissors" && computerSelection === "Paper")
+    ) {
+        wins++;
         return winPrompt
-    } else if (playerSelectionUC === "Rock" && computerSelection === "Rock") {
-        return ("Draw! Try again.")
-    } else if (playerSelectionUC === "Paper" && computerSelection === "Paper") {
-        return ("Draw! Try again")    
-    } else if (playerSelectionUC === "Paper" && computerSelection === "Rock") {
-        wins += +1
-        return winPrompt    
-    } else if (playerSelectionUC === "Paper" && computerSelection === "Scissors") {
-        losses += +1
-        return lossPrompt   
-    } else if (playerSelectionUC === "Scissors" && computerSelection === "Rock") {
-        losses += +1
-        return lossPrompt   
-    } else if (playerSelectionUC === "Scissors" && computerSelection === "Paper") {
-        wins += +1
-        return winPrompt   
-    } else if (playerSelectionUC === "Scissors" && computerSelection === "Scissors") {
-        return ("Draw! Try again") 
-    } else  {
-        return "error" 
+
+    } else if (playerSelectionUC === computerSelection)  {
+        return "Draw! Try again." 
+    } else {
+        return "error"
     }
 }
 
 function game() {
-    console.log(playRound());
-    console.log(playRound());
-    console.log(playRound());
-    console.log(playRound());
-    console.log(playRound());
+    return wins === 5 || losses === 5
 }
+
+
+    
+
 
 let playerSelection = prompt("Please choose your fighter");
 let playerSelectionUC = playerSelection.charAt(0).toUpperCase() + playerSelection.slice(1).toLowerCase();
