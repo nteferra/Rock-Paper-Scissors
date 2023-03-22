@@ -14,21 +14,26 @@ let losses = 0;
 
 function playRound() {
     if (playerSelectionUC === "Rock" && computerSelection === "Paper") {
-        return lossPrompt
-        // return to prompt
+        losses += +1;
+        return lossPrompt; 
     } else if (playerSelectionUC === "Rock" && computerSelection === "Scissors") {
+        wins += +1
         return winPrompt
     } else if (playerSelectionUC === "Rock" && computerSelection === "Rock") {
         return ("Draw! Try again.")
     } else if (playerSelectionUC === "Paper" && computerSelection === "Paper") {
         return ("Draw! Try again")    
     } else if (playerSelectionUC === "Paper" && computerSelection === "Rock") {
+        wins += +1
         return winPrompt    
     } else if (playerSelectionUC === "Paper" && computerSelection === "Scissors") {
+        losses += +1
         return lossPrompt   
     } else if (playerSelectionUC === "Scissors" && computerSelection === "Rock") {
+        losses += +1
         return lossPrompt   
     } else if (playerSelectionUC === "Scissors" && computerSelection === "Paper") {
+        wins += +1
         return winPrompt   
     } else if (playerSelectionUC === "Scissors" && computerSelection === "Scissors") {
         return ("Draw! Try again") 
