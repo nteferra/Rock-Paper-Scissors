@@ -64,4 +64,3 @@ function result() {
     console.log("   draws: " + draws)
 }
 
-game()
