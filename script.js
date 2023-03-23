@@ -32,7 +32,7 @@ function playRound() {
 
     } else if (playerSelection.toLowerCase() === computerSelection.toLowerCase())  {
         draws++;
-        return "Draw! Try again." 
+        return "Draw! Try again." to 
     } else {
         return "error"
     }
