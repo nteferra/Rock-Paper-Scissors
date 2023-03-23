@@ -32,7 +32,7 @@ function playRound() {
 
     } else if (playerSelection.toLowerCase() === computerSelection.toLowerCase())  {
         draws++;
-        return "Draw! Try again." to 
+        return "Draw! Try again." 
     } else {
         return "error"
     }
@@ -48,21 +48,20 @@ function game() {
         console.log(currentRound)
     }if (wins > losses) {
         console.log("Congratulations! You beat the computer")
-        console.log(result())
+        result()
     } else if (losses > wins) {
         console.log("You lost to the computer. Better luck next time!")
-        console.log(result())
+        result()
     } else {
         console.log("The battle has ended in a stalemate")
-        console.log(result())
+        result()
     }
 }
 
 function result() {
-    console.log("wins: " + wins)
-    console.log("losses: " + losses)
-    console.log("draws: " + draws)
-
+    console.log("   wins: " + wins)
+    console.log("   losses: " + losses)
+    console.log("   draws: " + draws)
 }
 
-console.log(game())
+game()
