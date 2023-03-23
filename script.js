@@ -1,52 +1,68 @@
-// keep a tally of rounds won
-//first to five rounds wins
-//return to selection prompt after each round unless a victor emerges
-
+//Generate random choice for computer
 const choiceArray = ["Rock", "Paper", "Scissors"];
 
 function getComputerChoice() {
     return choiceArray[Math.floor(Math.random() * choiceArray.length)];
 }
 
+//keep count of score
 let wins = 0;
 let losses = 0;
+let draws = 0
 
-
+//main function for playing a round of the game
 function playRound() {
-    if ((playerSelectionUC === "Rock" && computerSelection === "Paper") || 
-        (playerSelectionUC === "Paper" && computerSelection === "Scissors") ||
-        (playerSelectionUC === "Scissors" && computerSelection === "Rock")
+    let playerSelection = prompt("Please choose your weapon");
+    let computerSelection = getComputerChoice();
+    let winPrompt = "You win! " + playerSelection + " beats " + computerSelection;
+    let lossPrompt = "You lose! " + computerSelection + " beats " + playerSelection;
+    if ((playerSelection.toLowerCase() === "rock" && computerSelection === "Paper") || 
+        (playerSelection.toLowerCase() === "paper" && computerSelection === "Scissors") ||
+        (playerSelection.toLowerCase() === "scissors" && computerSelection === "Rock")
     ) {
         losses++;
         return lossPrompt; 
           
-    } if ((playerSelectionUC === "Rock" && computerSelection === "Scissors") ||
-         (playerSelectionUC === "Paper" && computerSelection === "Rock") ||
-         (playerSelectionUC === "Scissors" && computerSelection === "Paper")
+    } if ((playerSelection.toLowerCase() === "rock" && computerSelection === "Scissors") ||
+         (playerSelection.toLowerCase() === "paper" && computerSelection === "Rock") ||
+         (playerSelection.toLowerCase === "scissors" && computerSelection === "Paper")
     ) {
         wins++;
-        return winPrompt
+        return winPrompt;
 
-    } else if (playerSelectionUC === computerSelection)  {
+    } else if (playerSelection.toLowerCase() === computerSelection.toLowerCase())  {
+        draws++;
         return "Draw! Try again." 
     } else {
         return "error"
     }
-}
-
-function game() {
-    return wins === 5 || losses === 5
-}
-
-
     
+}
+//game function that plays 5 rounds and declares a winner
+function game() {
+  //Play game 5 times
+    for (let i = 0; i < 5; i++) {
+        // Call playRound function, passing in newly returned values
+        // from the playerPlay and computerPlay functions
+        let currentRound = playRound()
+        console.log(currentRound)
+    }if (wins > losses) {
+        console.log("Congratulations! You beat the computer")
+        console.log(result())
+    } else if (losses > wins) {
+        console.log("You lost to the computer. Better luck next time!")
+        console.log(result())
+    } else {
+        console.log("The battle has ended in a stalemate")
+        console.log(result())
+    }
+}
 
+function result() {
+    console.log("wins: " + wins)
+    console.log("losses: " + losses)
+    console.log("draws: " + draws)
 
-let playerSelection = prompt("Please choose your fighter");
-let playerSelectionUC = playerSelection.charAt(0).toUpperCase() + playerSelection.slice(1).toLowerCase();
-let computerSelection = getComputerChoice();
+}
 
-let winPrompt = "You win! " + playerSelectionUC + " beats " + computerSelection
-let lossPrompt = "You lose! " + computerSelection + " beats " + playerSelectionUC
-
-console.log(playRound())
+console.log(game())
