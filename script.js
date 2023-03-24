@@ -14,8 +14,8 @@ let draws = 0
 function playRound() {
     let playerSelection = prompt("Please choose your weapon");
     let computerSelection = getComputerChoice();
-    let winPrompt = "You win! " + playerSelection + " beats " + computerSelection;
-    let lossPrompt = "You lose! " + computerSelection + " beats " + playerSelection;
+    let winPrompt = "You win! " + playerSelection + " beats " + computerSelection.toLowerCase();
+    let lossPrompt = "You lose! " + computerSelection.toLowerCase() + " beats " + playerSelection;
     if ((playerSelection.toLowerCase() === "rock" && computerSelection === "Paper") || 
         (playerSelection.toLowerCase() === "paper" && computerSelection === "Scissors") ||
         (playerSelection.toLowerCase() === "scissors" && computerSelection === "Rock")
