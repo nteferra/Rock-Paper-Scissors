@@ -11,9 +11,13 @@ let losses = 0;
 let draws = 0;
 
 let playerSelection
+let scoreboardEl = document.querySelector('#scoreboard');
 let tally = document.querySelector('#tally');
 let results = document.querySelector('#results');
 let winnerEl = document.querySelector('#winner');
+
+const playAgain = document.createElement('button');
+playAgain.setAttribute('id', 'playAgain');
 
 winnerEl.textContent = "The battle awaits a victor"
 
@@ -46,6 +50,12 @@ function clickChoice(selection) {
         return error
     }
 }
+// functio to reset the game
+function reset() {
+    return wins = 0, losses = 0, draws = 0, winnerEl.textContent = "The battle awaits a victor",
+    tally.textContent = "   wins: " + wins + "   losses: " + losses + "   draws: " + draws;
+    
+}
 
 function declareAWinner() {
     if (wins == 5) {
@@ -55,6 +65,12 @@ function declareAWinner() {
     } else {
         return winnerEl;
     }
+    scoreboardEl.appendChild(playAgain);
+    playAgain.textContent = "Play Again?"
+    playAgain.addEventListener('click', () => {
+        reset()
+    })
+
 }
 
 //main function for playing a round of the game
