@@ -8,11 +8,57 @@ function getComputerChoice() {
 //keep count of score
 let wins = 0;
 let losses = 0;
-let draws = 0
+let draws = 0;
+
+let playerSelection
+let tally = document.querySelector('#tally');
+let results = document.querySelector('#results');
+let winnerEl = document.querySelector('#winner');
+
+winnerEl.textContent = "The battle awaits a victor"
+
+const rockBtn = document.querySelector('#rock');
+rockBtn.addEventListener('click', () => {
+    clickChoice(rock);
+});
+
+const paperBtn = document.querySelector('#paper');
+paperBtn.addEventListener('click', () => {
+    clickChoice(paper)
+});
+
+const scissorsBtn = document.querySelector('#scissors');
+scissorsBtn.addEventListener('click', () => {
+    clickChoice(scissors)
+});
+
+function clickChoice(selection) {
+    if (selection === rock) {
+        playerSelection = 'rock';
+        playRound();
+    } else if (selection === paper) {
+        playerSelection = 'paper';
+        playRound();
+    } else if (selection === scissors) {
+        playerSelection = 'scissors';
+        playRound();
+    } else {
+        return error
+    }
+}
+
+function declareAWinner() {
+    if (wins == 5) {
+        winnerEl.textContent = "Congratulations! You beat the computer.";
+    } else if (losses == 5) {
+        winnerEl.textContent = "You lost to the computer. Better luck next time!";
+    } else {
+        return winnerEl;
+    }
+}
 
 //main function for playing a round of the game
 function playRound() {
-    let playerSelection = prompt("Please choose your weapon");
     let computerSelection = getComputerChoice();
     let winPrompt = "You win! " + playerSelection + " beats " + computerSelection.toLowerCase();
     let lossPrompt = "You lose! " + computerSelection.toLowerCase() + " beats " + playerSelection;
@@ -21,46 +67,48 @@ function playRound() {
         (playerSelection.toLowerCase() === "scissors" && computerSelection === "Rock")
     ) {
         losses++;
-        return lossPrompt; 
+        results.textContent = lossPrompt; 
           
-    } if ((playerSelection.toLowerCase() === "rock" && computerSelection === "Scissors") ||
+    } else if ((playerSelection.toLowerCase() === "rock" && computerSelection === "Scissors") ||
          (playerSelection.toLowerCase() === "paper" && computerSelection === "Rock") ||
-         (playerSelection.toLowerCase === "scissors" && computerSelection === "Paper")
+         (playerSelection.toLowerCase() === "scissors" && computerSelection === "Paper")
     ) {
         wins++;
-        return winPrompt;
+        results.textContent = winPrompt;
 
     } else if (playerSelection.toLowerCase() === computerSelection.toLowerCase())  {
         draws++;
-        return "Draw! Try again." 
+        results.textContent = "Draw! Try again."; 
+        
     } else {
-        return "error"
+        return "error";
+    } if (wins == 5 || losses == 5) {
+        declareAWinner()
     }
-    
-}
-//game function that plays 5 rounds and declares a winner
-function game() {
-  //Play game 5 times
-    for (let i = 0; i < 5; i++) {
-        // Call playRound function, passing in newly returned values
-        // from the playerPlay and computerPlay functions
-        let currentRound = playRound()
-        console.log(currentRound)
-    }if (wins > losses) {
-        console.log("Congratulations! You beat the computer")
-        result()
-    } else if (losses > wins) {
-        console.log("You lost to the computer. Better luck next time!")
-        result()
-    } else {
-        console.log("The battle has ended in a stalemate")
-        result()
-    }
+    tally.textContent = "   wins: " + wins + "   losses: " + losses + "   draws: " + draws;
+
 }
 
-function result() {
-    console.log("   wins: " + wins)
-    console.log("   losses: " + losses)
-    console.log("   draws: " + draws)
-}
+
+//game function that plays 5 rounds and declares a winner
+// function game() {
+//   //Play game 5 times
+//     for (let i = 0; i < 5; i++) {
+//         // Call playRound function, passing in newly returned values
+//         // from the playerPlay and computerPlay functions
+//         let currentRound = playRound()
+//         console.log(currentRound)
+//     }if (wins > losses) {
+//         console.log("Congratulations! You beat the computer")
+//         result()
+//     } else if (losses > wins) {
+//         console.log("You lost to the computer. Better luck next time!")
+//         result()
+//     } else {
+//         console.log("The battle has ended in a stalemate")
+//         result()
+//     }
+// }
+
+
 
