@@ -54,7 +54,7 @@ function clickChoice(selection) {
 function reset() {
     return wins = 0, losses = 0, draws = 0, 
     winnerEl.textContent = "The battle awaits a victor",
-    tally.textContent = "   wins: " + wins + "   losses: " + losses + "   draws: " + draws,
+    tally.textContent = "   Wins: " + wins + "   Losses: " + losses + "   Draws: " + draws,
     results.textContent = "";
     
 }
@@ -103,7 +103,7 @@ function playRound() {
     } if (wins == 5 || losses == 5) {
         declareAWinner()
     }
-    tally.textContent = "   wins: " + wins + "   losses: " + losses + "   draws: " + draws;
+    tally.textContent = "Wins: " + wins + "  Losses: " + losses + "  Draws: " + draws;
 
 }
 
