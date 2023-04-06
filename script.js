@@ -52,8 +52,9 @@ function clickChoice(selection) {
 }
 // functio to reset the game
 function reset() {
-    return wins = 0, losses = 0, draws = 0, winnerEl.textContent = "The battle awaits a victor",
-    tally.textContent = "   wins: " + wins + "   losses: " + losses + "   draws: " + draws;
+    return wins = 0, losses = 0, draws = 0, 
+    winnerEl.textContent = "The battle awaits a victor",
+    tally.textContent = "   wins: " + wins + "   losses: " + losses + "   draws: " + draws,
     results.textContent = "";
     
 }
