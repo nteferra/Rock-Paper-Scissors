@@ -33,3 +33,7 @@ button {
 h1 {
     border-bottom: 2px solid antiquewhite;
 }
+
+h2 {
+    text-align: center;
+}
