@@ -101,7 +101,8 @@ function playRound() {
     } else {
         return "error";
     } if (wins == 5 || losses == 5) {
-        declareAWinner()
+        declareAWinner();
+        return;
     }
     tally.textContent = "Wins: " + wins + "  Losses: " + losses + "  Draws: " + draws;
 
