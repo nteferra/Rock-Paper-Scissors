@@ -54,7 +54,7 @@ function clickChoice(selection) {
 function reset() {
     return wins = 0, losses = 0, draws = 0, winnerEl.textContent = "The battle awaits a victor",
     tally.textContent = "   wins: " + wins + "   losses: " + losses + "   draws: " + draws;
-    results.textcontent = "";
+    results.textContent = "";
     
 }
 
